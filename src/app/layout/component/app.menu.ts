@@ -25,6 +25,14 @@ export class AppMenu {
                 items: [{ label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/'] }]
             },
             {
+                label: 'Servidores',
+                items: [
+                    { label: 'Desarrollo', icon: 'pi pi-fw pi-table', routerLink: ['/uikit/servidor'] },
+                    { label: 'Certificación', icon: 'pi pi-fw pi-table', routerLink: ['/uikit/table'] },
+                    { label: 'Producción', icon: 'pi pi-fw pi-table', routerLink: ['/uikit/servidor'] }
+                ]
+            },
+            {
                 label: 'UI Components',
                 items: [
                     { label: 'Form Layout', icon: 'pi pi-fw pi-id-card', routerLink: ['/uikit/formlayout'] },
@@ -41,7 +49,7 @@ export class AppMenu {
                     { label: 'File', icon: 'pi pi-fw pi-file', routerLink: ['/uikit/file'] },
                     { label: 'Chart', icon: 'pi pi-fw pi-chart-bar', routerLink: ['/uikit/charts'] },
                     { label: 'Timeline', icon: 'pi pi-fw pi-calendar', routerLink: ['/uikit/timeline'] },
-                    { label: 'Misc', icon: 'pi pi-fw pi-circle', routerLink: ['/uikit/misc'] }
+                    { label: 'Misc', icon: 'pi pi-fw pi-circle', routerLink: ['/uikit/misc'] },
                 ]
             },
             {
