@@ -19,6 +19,10 @@ import { TagModule } from 'primeng/tag';
 import { Customer, CustomerService, Representative } from '../service/customer.service';
 import { Product, ProductService } from '../service/product.service';
 
+import { Servidor } from '../../models/servidor.model';
+import { ServidorService } from '../service/servidor.service';
+import { HttpClientModule } from '@angular/common/http';
+
 interface expandedRows {
     [key: string]: boolean;
 }
@@ -42,13 +46,14 @@ interface expandedRows {
         ButtonModule,
         RatingModule,
         RippleModule,
-        IconFieldModule
+        IconFieldModule,
+        HttpClientModule
     ],
     template: ` <div class="card">
             <div class="font-semibold text-xl mb-4">Servidores Desarrollo</div>
             <p-table
                 #dt1
-                [value]="customers1"
+                [value]="servidores"
                 dataKey="id"
                 [rows]="10"
                 [loading]="loading"
@@ -73,19 +78,19 @@ interface expandedRows {
                     <tr>
                         <th style="min-width: 12rem">
                             <div class="flex justify-between items-center">
-                                Name
+                                Nombre
                                 <p-columnFilter type="text" field="name" display="menu" placeholder="Search by name"></p-columnFilter>
                             </div>
                         </th>
                         <th style="min-width: 12rem">
                             <div class="flex justify-between items-center">
-                                Country
+                                Estado
                                 <p-columnFilter type="text" field="country.name" display="menu" placeholder="Search by country"></p-columnFilter>
                             </div>
                         </th>
                         <th style="min-width: 14rem">
                             <div class="flex justify-between items-center">
-                                Agent
+                                IP
                                 <p-columnFilter field="representative" matchMode="in" display="menu" [showMatchModes]="false" [showOperator]="false" [showAddButton]="false">
                                     <ng-template #header>
                                         <div class="px-3 pt-3 pb-0">
@@ -156,19 +161,13 @@ interface expandedRows {
                 <ng-template #body let-customer>
                     <tr>
                         <td>
-                            {{ customer.name }}
+                            {{ servidores[0].nombre }}
                         </td>
                         <td>
-                            <div class="flex items-center gap-2">
-                                <img src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png" [class]="'flag flag-' + customer.country.code" width="30" />
-                                <span>{{ customer.country.name }}</span>
-                            </div>
+                            {{ servidores[0].nombre }}
                         </td>
                         <td>
-                            <div class="flex items-center gap-2">
-                                <img [alt]="customer.representative.name" src="https://primefaces.org/cdn/primeng/images/demo/avatar/{{ customer.representative.image }}" width="32" style="vertical-align: middle" />
-                                <span class="image-text">{{ customer.representative.name }}</span>
-                            </div>
+                            {{ servidores[0].nombre }}
                         </td>
                         <td>
                             {{ customer.date | date: 'MM/dd/yyyy' }}
@@ -210,7 +209,7 @@ interface expandedRows {
     `,
     providers: [ConfirmationService, MessageService, CustomerService, ProductService]
 })
-export class Servidor implements OnInit {
+export class Servidordemo implements OnInit {
     customers1: Customer[] = [];
 
     customers2: Customer[] = [];
@@ -241,12 +240,18 @@ export class Servidor implements OnInit {
 
     @ViewChild('filter') filter!: ElementRef;
 
-    constructor(
+    servidores: Servidor[] = [];
+    
+    constructor(private servidorService: ServidorService) {}
+
+    /*constructor(
         private customerService: CustomerService,
-    ) {}
+    ) {}*/
 
     ngOnInit() {
-        this.customerService.getCustomersLarge().then((customers) => {
+        this.cargarServidores();
+
+        /*this.customerService.getCustomersLarge().then((customers) => {
             this.customers1 = customers;
             this.loading = false;
 
@@ -274,8 +279,23 @@ export class Servidor implements OnInit {
             { label: 'Negotiation', value: 'negotiation' },
             { label: 'Renewal', value: 'renewal' },
             { label: 'Proposal', value: 'proposal' }
-        ];
+        ];*/
     }
+
+    cargarServidores(): void {
+    // Nos suscribimos al Observable para recibir los datos
+    this.servidorService.getServidoresDeDesarrollo().subscribe({
+      next: (data) => {
+        // Cuando los datos llegan, los asignamos a nuestra propiedad
+        this.servidores = data;
+        console.log('Servidores cargados:', this.servidores);
+      },
+      error: (err) => {
+        // Manejo de errores
+        console.error('Error al cargar los servidores:', err);
+      }
+    });
+  }
 
     onSort() {
         this.updateRowGroupMetaData();
