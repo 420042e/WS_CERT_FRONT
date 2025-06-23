@@ -11,7 +11,7 @@ import { Servidor } from '../../models/servidor.model';
 export class ServidorService {
 
   // ¡IMPORTANTE! Reemplaza esto con la URL de tu backend .NET
-  private apiUrl = 'https://localhost:7013/'; 
+  private apiUrl = 'https://localhost:7013'; 
 
   constructor(private http: HttpClient) { }
 
@@ -19,7 +19,7 @@ export class ServidorService {
    * Obtiene la lista de servidores de desarrollo desde el backend.
    */
   getServidoresDeDesarrollo(): Observable<Servidor[]> {
-    const url = `${this.apiUrl}/Servidores/desarrollo`;
+    const url = `${this.apiUrl}/api/servidor`;
     return this.http.get<Servidor[]>(url);
   }
 }

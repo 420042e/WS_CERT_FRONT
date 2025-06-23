@@ -29,7 +29,7 @@ export class AppMenu {
                 items: [
                     { label: 'Desarrollo', icon: 'pi pi-fw pi-table', routerLink: ['/uikit/servidor'] },
                     { label: 'Certificación', icon: 'pi pi-fw pi-table', routerLink: ['/uikit/table'] },
-                    { label: 'Producción', icon: 'pi pi-fw pi-table', routerLink: ['/uikit/servidor'] }
+                    { label: 'Producción', icon: 'pi pi-fw pi-table', routerLink: ['/uikit/servidor2'] }
                 ]
             },
             {

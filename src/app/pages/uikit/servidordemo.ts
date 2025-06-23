@@ -21,7 +21,7 @@ import { Product, ProductService } from '../service/product.service';
 
 import { Servidor } from '../../models/servidor.model';
 import { ServidorService } from '../service/servidor.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 interface expandedRows {
     [key: string]: boolean;
@@ -46,8 +46,7 @@ interface expandedRows {
         ButtonModule,
         RatingModule,
         RippleModule,
-        IconFieldModule,
-        HttpClientModule
+        IconFieldModule
     ],
     template: ` <div class="card">
             <div class="font-semibold text-xl mb-4">Servidores Desarrollo</div>
@@ -158,31 +157,37 @@ interface expandedRows {
                         </th>
                     </tr>
                 </ng-template>
-                <ng-template #body let-customer>
+                <ng-template #body let-servidor>
                     <tr>
                         <td>
-                            {{ servidores[0].nombre }}
+                            {{ servidor.nombre }}
                         </td>
                         <td>
-                            {{ servidores[0].nombre }}
+                            {{ servidor.estado }}
                         </td>
                         <td>
-                            {{ servidores[0].nombre }}
+                            {{ servidor.iPv4 }}
                         </td>
                         <td>
-                            {{ customer.date | date: 'MM/dd/yyyy' }}
+                            {{ servidor.sistemaOperativo }}
                         </td>
                         <td>
-                            {{ customer.balance | currency: 'USD' : 'symbol' }}
+                            {{ servidor.sujeto }}
                         </td>
                         <td>
-                            <p-tag [value]="customer.status.toLowerCase()" [severity]="getSeverity(customer.status.toLowerCase())" styleClass="dark:!bg-surface-900" />
+                            {{ servidor.emisor }}
                         </td>
                         <td>
-                            <p-progressbar [value]="customer.activity" [showValue]="false" [style]="{ height: '0.5rem' }" />
+                            {{ servidor.validoDesde }}
                         </td>
-                        <td class="text-center">
-                            <p-tag [value]="customer.status.toLowerCase()" [severity]="getSeverity(customer.status.toLowerCase())" styleClass="dark:!bg-surface-900" />
+                        <td>
+                            {{ servidor.validoHasta }}
+                        </td>
+                        <td>
+                            {{ servidor.fechaRegistro }}
+                        </td>
+                        <td>
+                            {{ servidor.observacion }}
                         </td>
                     </tr>
                 </ng-template>
@@ -242,7 +247,7 @@ export class Servidordemo implements OnInit {
 
     servidores: Servidor[] = [];
     
-    constructor(private servidorService: ServidorService) {}
+    constructor(private servidorService: ServidorService, private http:HttpClient) {}
 
     /*constructor(
         private customerService: CustomerService,
@@ -287,6 +292,7 @@ export class Servidordemo implements OnInit {
     this.servidorService.getServidoresDeDesarrollo().subscribe({
       next: (data) => {
         // Cuando los datos llegan, los asignamos a nuestra propiedad
+        this.loading = false;
         this.servidores = data;
         console.log('Servidores cargados:', this.servidores);
       },

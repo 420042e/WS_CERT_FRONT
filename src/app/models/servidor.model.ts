@@ -2,7 +2,7 @@ export interface Servidor {
   id: number;
   nombre: string | null; // o string | undefined
   estado: string | null;
-  ipv4: string | null;
+  iPv4: string | null;
   sistemaOperativo: string | null; // JSON convierte "SISTEMA OPERATIVO" a camelCase
   idTipoServidor: number;
   sujeto: string;
