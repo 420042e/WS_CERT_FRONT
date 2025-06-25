@@ -28,7 +28,7 @@ export class AppMenu {
                 label: 'Servidores',
                 items: [
                     { label: 'Desarrollo', icon: 'pi pi-fw pi-table', routerLink: ['/uikit/servidor'] },
-                    { label: 'Certificación', icon: 'pi pi-fw pi-table', routerLink: ['/uikit/table'] },
+                    { label: 'Certificación', icon: 'pi pi-fw pi-table', routerLink: ['/uikit/cer'] },
                     { label: 'Producción', icon: 'pi pi-fw pi-table', routerLink: ['/uikit/servidor2'] }
                 ]
             },

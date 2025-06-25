@@ -20,7 +20,7 @@ import { Customer, CustomerService, Representative } from '../service/customer.s
 import { Product, ProductService } from '../service/product.service';
 
 import { Servidor } from '../../models/servidor.model';
-import { ServidorService } from '../service/servidor.service';
+import { Cer } from '../service/cer.service';
 import { HttpClient } from '@angular/common/http';
 
 interface expandedRows {
@@ -214,7 +214,7 @@ interface expandedRows {
     `,
     providers: [ConfirmationService, MessageService, CustomerService, ProductService]
 })
-export class Servidordemo implements OnInit {
+export class ServidorCerdemo implements OnInit {
     customers1: Customer[] = [];
 
     customers2: Customer[] = [];
@@ -247,7 +247,7 @@ export class Servidordemo implements OnInit {
 
     servidores: Servidor[] = [];
     
-    constructor(private servidorService: ServidorService, private http:HttpClient) {}
+    constructor(private servidorService: Cer, private http:HttpClient) {}
 
     /*constructor(
         private customerService: CustomerService,
@@ -259,7 +259,7 @@ export class Servidordemo implements OnInit {
 
     cargarServidores(): void {
     // Nos suscribimos al Observable para recibir los datos
-    this.servidorService.getServidoresDeDesarrollo().subscribe({
+    this.servidorService.getServidoresDeCertificacion().subscribe({
       next: (data) => {
         // Cuando los datos llegan, los asignamos a nuestra propiedad
         this.loading = false;
