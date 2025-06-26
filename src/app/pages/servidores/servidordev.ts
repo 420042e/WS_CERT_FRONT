@@ -214,7 +214,7 @@ interface expandedRows {
     `,
     providers: [ConfirmationService, MessageService, CustomerService, ProductService]
 })
-export class Servidordemo implements OnInit {
+export class ServidorDev implements OnInit {
     customers1: Customer[] = [];
 
     customers2: Customer[] = [];

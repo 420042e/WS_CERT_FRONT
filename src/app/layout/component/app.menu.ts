@@ -27,9 +27,12 @@ export class AppMenu {
             {
                 label: 'Servidores',
                 items: [
-                    { label: 'Desarrollo', icon: 'pi pi-fw pi-table', routerLink: ['/uikit/servidor'] },
-                    { label: 'Certificación', icon: 'pi pi-fw pi-table', routerLink: ['/uikit/cer'] },
-                    { label: 'Producción', icon: 'pi pi-fw pi-table', routerLink: ['/uikit/servidor2'] }
+                    { label: 'Desarrollo', icon: 'pi pi-fw pi-table', routerLink: ['/servidores/dev'] },
+                    { label: 'Certificación', icon: 'pi pi-fw pi-table', routerLink: ['/servidores/cer'] },
+                    { label: 'Producción BTB', icon: 'pi pi-fw pi-table', routerLink: ['/servidores/btb'] },
+                    { label: 'Producción DMZ', icon: 'pi pi-fw pi-table', routerLink: ['/servidores/dmz'] },
+                    { label: 'Producción BCR', icon: 'pi pi-fw pi-table', routerLink: ['/servidores/bcr'] },
+                    { label: 'Producción BHI', icon: 'pi pi-fw pi-table', routerLink: ['/servidores/bhi'] }
                 ]
             },
             {

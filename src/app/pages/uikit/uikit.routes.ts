@@ -14,8 +14,6 @@ import { TableDemo } from './tabledemo';
 import { OverlayDemo } from './overlaydemo';
 import { TreeDemo } from './treedemo';
 import { MenuDemo } from './menudemo';
-import { Servidordemo } from './servidordemo';
-import { ServidorCerdemo } from './servidorcerdemo';
 
 export default [
     { path: 'button', data: { breadcrumb: 'Button' }, component: ButtonDemo },
@@ -33,7 +31,5 @@ export default [
     { path: 'overlay', data: { breadcrumb: 'Overlay' }, component: OverlayDemo },
     { path: 'tree', data: { breadcrumb: 'Tree' }, component: TreeDemo },
     { path: 'menu', data: { breadcrumb: 'Menu' }, component: MenuDemo },
-    { path: 'servidor', data: { breadcrumb: 'Desarrollo' }, component: Servidordemo },
-    { path: 'cer', data: { breadcrumb: 'Certificacion' }, component: ServidorCerdemo },
     { path: '**', redirectTo: '/notfound' }
 ] as Routes;
