@@ -19,27 +19,27 @@ export class ServidorService {
    * Obtiene la lista de servidores de desarrollo desde el backend.
    */
   getServidoresDeDesarrollo(): Observable<Servidor[]> {
-    const url = `${this.apiUrl}/api/dev/desarrollo`;
+    const url = `${this.apiUrl}/api/dev`;
     return this.http.get<Servidor[]>(url);
   }
   getServidoresDeCertificacion(): Observable<Servidor[]> {
-    const url = `${this.apiUrl}/api/cer/certificacion`;
+    const url = `${this.apiUrl}/api/cer`;
     return this.http.get<Servidor[]>(url);
   }
   getServidoresDeProduccionBTB(): Observable<Servidor[]> {
-    const url = `${this.apiUrl}/api/btb/produccionbtb`;
+    const url = `${this.apiUrl}/api/btb`;
     return this.http.get<Servidor[]>(url);
   }
   getServidoresDeProduccionDMZ(): Observable<Servidor[]> {
-    const url = `${this.apiUrl}/api/dmz/producciondmz`;
+    const url = `${this.apiUrl}/api/dmz`;
     return this.http.get<Servidor[]>(url);
   }
   getServidoresDeProduccionBCR(): Observable<Servidor[]> {
-    const url = `${this.apiUrl}/api/bcr/produccionbcr`;
+    const url = `${this.apiUrl}/api/bcr`;
     return this.http.get<Servidor[]>(url);
   }
   getServidoresDeProduccionBHI(): Observable<Servidor[]> {
-    const url = `${this.apiUrl}/api/bhi/produccionbhi`;
+    const url = `${this.apiUrl}/api/bhi`;
     return this.http.get<Servidor[]>(url);
   }
 }
